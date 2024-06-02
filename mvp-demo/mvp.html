@@ -1,47 +1,73 @@
 <!doctype html>
-<html lang="de">
-<head>
+
+<html lang="de"><head>
     <title>MVP</title>
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="icon" sizes="512x512" href="bilder/icon-512.png"/>
+    <link rel="icon" sizes="512x512" href="bilder/icon-512.png">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="mobile-web-app-capable" content="yes"/>
-    <meta name="ROBOTS" content="INDEX, FOLLOW"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
 
-    <link rel="stylesheet" href="mvp.css" type="text/css"/>
+    <link rel="stylesheet" href="mvp.css" type="text/css">
 
-    <script src="mvp.js" type="text/javascript" defer></script>
+    <!-- kaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-    <link rel="stylesheet" href="scripts/katex/katex.css" type="text/css"/>
-    <script src="scripts/katex/katex.min.js" type="text/javascript" defer></script>
-    <script src="scripts/katex/contrib/auto-render.min.js" type="text/javascript" defer></script>
+    <script src="mvp.js" type="text/javascript" defer=""></script>
+
+    <link rel="stylesheet" href="scripts/katex/katex.css" type="text/css">
+    <script src="scripts/katex/katex.min.js" type="text/javascript" defer=""></script>
+    <script src="scripts/katex/contrib/auto-render.min.js" type="text/javascript" defer=""></script>
     <noscript>
         Sie haben JavaScript deaktiviert. Diese Seite benötigt zwingend JavaScript.
     </noscript>
 </head>
 
 <body>
-<header>Header</header>
-<nav>Navigation</nav>
-<aside>Sidebar</aside>
+<header>Lernprogramm</header>
+<nav id="nav">Navigation: <br>
+    <input type="radio" id="subject1" name="general" value="allgemein" number=0 checked>
+    <label for="subject1"> Allgemein</label> <br>
+    <input type="radio" id="subject2" name="math" value="mathe" number=1>
+    <label for="subject2"> Mathematik</label> <br>
+    <input type="radio" id="subject3" name="it" value="internettechnologien" number=2>
+    <label for="subject3"> Internettechnologien</label> <br>
+    <input type="radio" id="subject4" name="repo" value="repo" number=3>
+    <label for="subject4"> Online-Fragen</label><br><br>
+</nav>
+<!-- //onchange="switchSubject(this)" -->
 
 <main>
     <div id="boo">Aufgabe</div>
 
-    <p> </p>
+    <p id="question"> </p>
 
-    <div id="answer">
-        <button id="A">A</button>
-        <button id="B">B</button>
-        <button id="C">C</button>
-        <button id="D">D</button>
+    <div id="answer" number="-1">
+        <button id="A" number="0">A</button>
+        <button id="B" number="1">B</button>
+        <button id="C" number="2">C</button>
+        <button id="D" number="3">D</button>
     </div>
     <p id="text">Wähle die passende Antwort!</p>
 </main>
 
 <button id="start">Start</button>
 
-<footer>Footer</footer>
-</body>
-</html>
+<aside>
+    <div class="aside">
+        <h2>Fortschrittszähler wahr/falsch</h2>
+        <progress class="progressT" id="pct" max="10" value="0"></progress>
+        <progress class="progressF" id="pcf" max="10" value="0"></progress> <br>
+        <p id = "res"></p>
+    </div>
+</aside>
+
+<footer>by Franz Regir - s86074</footer>
+
+
+</body></html>
