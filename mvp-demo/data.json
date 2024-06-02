@@ -1,0 +1,39 @@
+{
+      "allgemein":[ 
+            {"a":"Wann wurde Karl der Große geboren?", "l":["747","828","650","1150"]},
+            {"a":"Welches Land ist nicht in der EU?","l":["Japan","Deutschland","Griechenland","Italien"]},
+            {"a":"Welches Land nahm an der Tram Europameisterschaft 2022 in Leipzig nicht teil?","l":["Niederlande", "Ukraine", "Australien","Portugal"]},
+            {"a":"Welche Produktion stammt nicht von Netflix?","l":["Hanna", "Dark", "Stranger Things","Haus des Geldes"]},
+            {"a":"Wenn Deutschland noch ein Kaiser hätte, wie würde dieser (2022) heißen?","l":["Georg Friedrich", "Angela Merkel", "Willhelm V.","Queen Elisabeth II."]},
+            {"a":"Was war Vincent van Gogh von Beruf?","l":["Künstler", "Bäcker", "Arbeitslos","König"]},
+            {"a":"Welche Farbe hat Blut?","l":["Rot", "Weiß", "Grün","Blau"]},
+            {"a":"Welche Farbe hat Grass?","l":["Grün", "Weiß", "Rot","Blau"]},
+            {"a":"Wieviele Beine haben Spinnen?","l":["8", "6", "4","0"]},
+            {"a":"Wie heißt der König der Niederlande?","l":["Willem-Alexander", "Willem-Alexzelf", "Willem-Alexniemand","Queen Elisabeth II."]},
+            {"a":"Welches Land nutzt als Währung nicht den Euro?","l":["Liechtenstein", "San Marino","Monaco","Andorra"]}     
+      ],
+      "mathe":[
+            {"a":"x^2+x^2", "l":["2x^2","x^4","x^8","2x^4"]},
+            {"a":"x^2*x^2", "l":["x^4","x^2","2x^2","4x"]},
+            {"a":"10+1", "l":["3", "2", "0","1"]},
+            {"a":"\\frac{100}{4}","l":["25", "24", "23","100^4"]},
+            {"a": "\\sum\\limits_{k=1}^{\\infty} \\frac{1}{k}","l": ["\\infty", "0", "1", "e"]},
+            {"a":"\\frac{3}{8}*\\frac{4}{5}","l":["\\frac{3}{10}", "\\frac{12}{45}", "0.29","0"]},
+            {"a":"\\log_2 (4*32)", "l":["\\log_2 (4) * \\log_2 (32)", "\\log_2 (4) + \\log_2 (32)",  "\\log_4 (2) + log_32 (2)","\\log_4 (2) * log_32 (2)"]},
+            {"a": "\\sum\\limits_{k=0}^{n} a^k","l": ["\\frac{a^{n+1}-1}{a-1}", "\\frac{a^{n+1}}{a}", "\\frac{a-1}{a^{n+1}-1}", "\\frac{a^{n}-1}{a}"]},
+            {"a":"x^5*x^2","l":["x^7","x^5","7x^2","7x^5"]},
+            {"a":"\\frac{\\sin (x)}{\\cos (x)}","l":["\\sinh (x)","\\tan (x)","\\arcsin (x)","\\cosh (x)"]}
+      ],
+      "internettechnologien": [
+            {"a":"Welche Authentifizierung bietet HTTP?", "l":["Digest Access Authentication","OTP","OAuth","2-Faktor-Authentifizierung"]},
+            {"a":"Welches Transportprotokoll eignet sich für zeitkritische Übertragungen?", "l":["UDP","TCP","HTTP","Fast Retransmit"]},
+            {"a":"Wofür steht die Abkürzung HTML?", "l":["Hypertext Makeup Language", "Hard Too Much Layout", "Hyper Taxi make Luggage","How to make Lava"]},
+            {"a":"Welcher Standard-Port wird für HTTPS verwendet?", "l":["443", "404", "445","444"]},
+            {"a":"Welchen HTTP Request-Typen gibt es?", "l":["GET","CREATE","SELECT","APPEND"], "c": "0"},
+            {"a":"Auf welcher Schicht des OSI-Modells ist DNS angesiedelt?","l":["7-Anwendungsschicht", "2-Sicherungsschicht", "3-Vermittlungsschicht", "6-Datendarstellungsschicht?"]},
+            {"a":"Welche ist keine DNS-Komponente?","l":["Repeter", "Resolver", "Namensraum","Namensserver"]},
+            {"a":"Welcher ist kein TLD-Typ?","l":["sTLD", "ccTLDs", "gTLDs","iTLD"]},
+            {"a":"Wozu dient die Leerzeile nach den HTTP-Request-Header?","l":["Request-Ende", "Zeilenumbruch", "Start Parameterübergabe","Start des Request-Bodys"]},
+            {"a":"Wofür steht die Abkürzung URL?", "l":["Uniform Resource Locator", "Underground Rollover Link", "Universal Rapid Launcher","UnRecongnized Lattitude"]}
+      ]
+}
