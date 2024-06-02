@@ -3,7 +3,7 @@
 //import {katex} from "./scripts/katex/katex";
 
 
-let winCount = 0, failCount = 0, questionCount = 0, currentSubject = 0, trueAnswer = 0, pres;
+let winCount = 0, failCount = 0, questionCount = 0, currentSubject = 0, trueAnswer = 0, trueString = "", pres;
 var data, randomTask, ans;
 /*
 data.allgemein = undefined;
@@ -25,50 +25,6 @@ class Model {
     taskNr = 0;
     //currentData;
     constructor() { }
-
-/*
-    // Holt eine Frage aus dem Array, zufällig ausgewählt oder vom Server
-    getTask(nr) {
-//        if (nr === -1)
-//            nr = Math.floor(Math.random() * 4);
-        let subject= "";
-        if (currentSubject === 0) {
-            subject = "allgemein";
-            //this.currentData = this.data["allgemein"];
-            //return this.currentdata[nr%this.currentdata.length];
-        } else if (currentSubject === 1) {
-            subject = "mathe";
-            //this.currentData = this.data["mathe"];
-            //return this.currentdata[nr%this.currentdata.length];
-        } else if (currentSubject === 2) {
-            subject = "internettechnologien";
-            //this.currentData = this.data["internettechnologien"];
-            //return this.currentdata[nr%this.currentdata.length];
-        } else if (currentSubject === 3) {}
-        console.log(this.data[subject][nr%this.data[subject].length]);
-        return this.data[subject][nr%this.data[subject].length].a;
-        //console.log("current data: ", this.currentData);
-
-        //if (this.currentData !== null && this.currentData !== undefined && this.currentData) {
-        //    console.log("current question: ", this.currentData[nr % this.currentData.length]);
-        //    this.taskNr++;
-        //    return this.currentData[nr % this.currentData.length];
-        //}
-//        return "Frage nicht gefunden :(";
-//        return "21 + 21";  // Aufgabe + Lösungen
-    }
- */
-    /*
-    checkAnswer(answer) {
-        // TODO
-        let sub = document.getElementById("subject"+(answer+1)).getAttribute("value");
-        if (this.data[sub][this.taskNr].l[0] === document.getElementById("answer").innerHTML) //Number(document.getElementById("answer").getAttribute("number"))
-            {}
-
-    }
-     */
-
-
 
     fetchData() {
         if (currentSubject < 3) {
@@ -105,24 +61,8 @@ class Presenter {
             console.log("downloading data from online repository through REST");
         } else {
             console.log("downloading data from data file on my public HTW-directory");
-
-            /*
-            let frag = this.m.getTask(this.anr);
-            console.log("Frage ausgewählt", frag);
-            //console.log("Frage ausgewählt", frag.a);
-            //frag.l.forEach(ans => {console.log(ans)})
-            this.shuffle(frag);
-            console.log(frag);
-            View.renderText(frag.a);
-            for (let i = 0; i < 4; i++) {
-                let wert = frag.l[i];
-                let pos = i;
-                View.inscribeButtons(i, wert, pos); // Tasten beschriften -> View -> Antworten
-            }
-             */
         }
         this.m.fetchData();
-        //console.log("fetched data: ", data);
     }
 
     static whichSubject() {
@@ -141,6 +81,7 @@ class Presenter {
     }
     static shuffle(ans) {
         trueAnswer = 0;
+        trueString = ans[0];
         console.log(ans);
         for(let i = 0, j, b; i < ans.length; i++) {
             j = Math.floor(Math.random() * 4);
@@ -162,7 +103,7 @@ class Presenter {
         if (winCount < 10 && failCount < 10) {
             console.log("Antwort: ", answer);
 //        this.m.checkAnswer(answer);
-            if (trueAnswer === answer) {
+            if ((currentSubject !== 1 && trueAnswer === answer) || (currentSubject === 1 && answer === trueString)) {
                 winCount++;
                 this.v.updateScore();
                 this.checkScore();
@@ -180,12 +121,12 @@ class Presenter {
             document.getElementById("res").innerText = "Game Over, Gratulation! " + winCount + " richtige Antworten sind 10 Gründe zur Freude!\n" +
                 "gestellte Fragen: " + questionCount + "\n" +
                 "falsche Antworten: " + failCount + "\n" +
-                "Zum neu starten bitte Themenbereich auswählen!";
+                "Zum neu starten bitte Themenbereich auswählen oder den Start-Button drücken!";
         } else if (failCount > 9) {
             document.getElementById("res").innerText = "Game Over, " + failCount + " falsche Antworten sind mindestens eine zu viel!\n" + //<br> +
                 "gestellte Fragen: " + questionCount + "\n" + //<br> +
                 "falsche Antworten: " + winCount + "\n" + //<br> +
-                "Zum neu starten bitte Themenbereich auswählen!";
+                "Zum neu starten bitte Themenbereich auswählen oder den Start-Button drücken!";
         }
     }
 }
@@ -214,15 +155,20 @@ class View {
 
     static inscribeButtons(i, text, pos) {
         document.querySelectorAll("#answer > *")[i].textContent = text;
-        //document.querySelectorAll("#answer > *")[i].setAttribute("number", pos);
+        document.querySelectorAll("#answer > *")[i].setAttribute("number", pos);
     }
 
     checkEvent(event) {
         console.log(event.type, " on ", event.target.id, event.target.type, event.target.getAttribute("name"), event.target.getAttribute("value"), event.target.getAttribute("number"));
         //let et = event.target;
         if (event.target.type === "button" || event.target.type === "submit") {
-            console.log("button input ", event.target.attributes.getNamedItem("number").value)
-            this.p.checkAnswer(Number(event.target.attributes.getNamedItem("number").value));
+            if (currentSubject !== 1) {
+                console.log("button input ", event.target.attributes.getNamedItem("number").value);
+                this.p.checkAnswer(Number(event.target.attributes.getNamedItem("number").value));
+            } else {
+                console.log("button input ", event.target.attributes.getNamedItem("value").value);
+                this.p.checkAnswer(event.target.attributes.getNamedItem("value").value);
+            }
         } else if ( event.target.type === "radio" ) {
             console.log("radio input ", event.target.attributes.getNamedItem("number").value);
             document.getElementById("res").innerHTML = "";
@@ -269,17 +215,24 @@ class View {
             let a = randomTask.a;
             katex.render(a, question, {throwOnError: false});
             document.getElementById("A").value = ans[0];
+            document.querySelectorAll("#answer > *")[0].setAttribute("number", 0);
             katex.render(ans[0], A, {throwOnError: false});
             document.getElementById("B").value = ans[1];
+            document.querySelectorAll("#answer > *")[1].setAttribute("number", 1);
             katex.render(ans[1], B, {throwOnError: false});
             document.getElementById("C").value = ans[2];
+            document.querySelectorAll("#answer > *")[2].setAttribute("number", 2);
             katex.render(ans[2], C, {throwOnError: false});
             document.getElementById("D").value = ans[3];
+            document.querySelectorAll("#answer > *")[3].setAttribute("number", 3);
+
             katex.render(ans[3], D, {throwOnError: false});
+            /*
             document.getElementById("A").setAttribute("number", "0");
             document.getElementById("B").setAttribute("number", "1");
             document.getElementById("C").setAttribute("number", "2");
             document.getElementById("D").setAttribute("number", "3");
+             */
         } else {
             document.getElementById("question").innerHTML = randomTask.a;
             for (let i = 0; i < 4; i++) {
