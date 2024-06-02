@@ -14,7 +14,10 @@ body {
 }
 
 header {
-    background: #000000 url(bilder/dresden.jpg) no-repeat left top;
+    background: #000000 url(bilder/dresden.jpg) repeat-x left top 25%;
+    /*background-size: ;
+    background-image: linear-gradient(to bottom, #ff0000, #00ff00);*/
+    height: 25vh;
 }
 
 aside {
@@ -40,6 +43,13 @@ header, main, nav, aside, footer {
     padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 0.5em;
+}
+
+.progressT {
+    accent-color: green;
+}
+.progressF {
+    accent-color: red;
 }
 
 
